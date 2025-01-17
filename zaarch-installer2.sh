@@ -39,7 +39,7 @@ file="/etc/sudoers"
 searchLine="# %wheel ALL=(ALL:ALL) ALL"
 replaceLine="%wheel ALL=(ALL:ALL) ALL"
 if grep -q "$searchLine" "$file"; then
-  sudo sed -i $searchLine $replaceLine $file
+  sudo sed -i "$searchLine" "$replaceLine" "$file"
 fi
 exit
 
