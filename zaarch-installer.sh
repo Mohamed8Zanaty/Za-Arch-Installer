@@ -18,30 +18,10 @@ while true; do
   echo "Partition Not Fount, Try Again"
 done
 
-while true; do
-  read -p "Do You Want To Make Swap Filr [y or n]: " swapAns
-  if [ "$swapAns" = "y"]; then
-    while true; do
-      read -p "Enter Swap Partition's Path: " swapPath
-      if [ -e "$rootPath" ]; then
-        break
-      fi
-      echo "Partition Not Fount, Try Again"
-    done
-    break
-  fi
-  if [ "$swapAns" = "n"]; then
-    break;
-  fi
-  echo "Partition Not Fount, Try Again"
-done
 
 mkfs.fat -F32 $efiPath
 mkfs.ext4 $rootPath
-if [ "$swapAns" = "y" ]; then
-  mkswap $swapPath
-  swapon $swapPath
-fi
+
 
 mkdir -p /mnt/boot/efi
 
