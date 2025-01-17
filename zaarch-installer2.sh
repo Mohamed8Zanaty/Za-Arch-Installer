@@ -36,8 +36,8 @@ passwd $username
 
 export EDITOR=nano
 file="/etc/sudoers"
-searchLine="# %wheel ALL=(ALL) ALL"
-replaceLine="%wheel ALL=(ALL) ALL"
+searchLine="# %wheel ALL=(ALL:ALL) ALL"
+replaceLine="%wheel ALL=(ALL:ALL) ALL"
 if grep -q "$searchLine" "$file"; then
   sudo sed -i $searchLine $replaceLine $file
 fi
