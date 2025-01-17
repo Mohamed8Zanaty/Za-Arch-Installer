@@ -30,13 +30,7 @@ echo "Install X Window System..."
 pacman -S xorg xorg-xinit xorg-server
 
 echo "Creating New User..."
-while true; do
-  read -p "Enter Username: " username
-  if [[ "$username" =~ ^[a-z_][a-z0-9_-]{0,31}$ ]]
-    break
-  fi
-  echo "Invalid Username, Try Again"
-done
+read -p "Enter Username: " username
 useradd -m -G wheel -s /bin/bash $username
 passwd $username
 
